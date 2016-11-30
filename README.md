@@ -4,7 +4,7 @@ SHIELD currently has gcc 4.2, here is what we need for the upgrade:
 
 You can find this information at [gcc.gnu.org/install](https://gcc.gnu.org/install/).
 
-1. Prerequisites
+####Prerequisites
   - [x] ISO C++98 compiler 
   - [x] C standard library and headers 
 ```This affects the popular ‘x86_64-unknown-linux-gnu’ platform (among other multilib targets), for which 64-bit (‘x86_64’) and 32-bit (‘i386’) libc headers are usually packaged separately. If you do a build of a native compiler on ‘x86_64-unknown-linux-gnu’, make sure you either have the 32-bit libc developer package properly installed (the exact name of the package depends on your distro) or you must build GCC as a 64-bit only compiler by configuring with the option --disable-multilib. Otherwise, you may encounter an error such as ‘fatal error: gnu/stubs-32.h: No such file```
@@ -19,3 +19,10 @@ You can find this information at [gcc.gnu.org/install](https://gcc.gnu.org/insta
   - [ ] MPC Library version >=0.8.1 ```It can be downloaded from http://www.multiprecision.org/. If an MPC source distribution is found in a subdirectory of your GCC sources named mpc, it will be built together with GCC. Alternatively, if MPC is already installed but it is not in your default library search path, the --with-mpc configure option should be used. See also --with-mpc-lib and --with-mpc-include. The in-tree build is only supported with the MPC version that download_prerequisites installs```
   - [ ] isl Library version 0.16, 0.15, or 0.14 ```Necessary to build GCC with the Graphite loop optimizations. It can be downloaded from ftp://gcc.gnu.org/pub/gcc/infrastructure/. If an isl source distribution is found in a subdirectory of your GCC sources named isl, it will be built together with GCC. Alternatively, the --with-isl configure option should be used if isl is not installed in your default library search path.```
 
+####Downloading the Source
+
+[GCC releases](https://gcc.gnu.org/releases.html).  
+
+```If you also intend to build binutils (either to upgrade an existing installation or for use in place of the corresponding tools of your OS), unpack the binutils distribution either in the same directory or a separate one. In the latter case, add symbolic links to any components of the binutils you intend to build alongside the compiler (bfd, binutils, gas, gprof, ld, opcodes, ...) to the directory containing the GCC sources.
+
+***Likewise the GMP, MPFR and MPC libraries*** can be automatically built together with GCC. You may simply run the contrib/download_prerequisites script in the GCC source directory to set up everything. Otherwise unpack the GMP, MPFR and/or MPC source distributions in the directory containing the GCC sources and rename their directories to gmp, mpfr and mpc, respectively (or use symbolic links with the same name).```
