@@ -27,6 +27,10 @@ If you also intend to build binutils (either to upgrade an existing installation
 
 ***Likewise the GMP, MPFR and MPC libraries*** can be automatically built together with GCC. You may simply run the contrib/download_prerequisites script in the GCC source directory to set up everything. Otherwise unpack the GMP, MPFR and/or MPC source distributions in the directory containing the GCC sources and rename their directories to gmp, mpfr and mpc, respectively (or use symbolic links with the same name).
 
+####IMPORTANT
+- Building libraries requires wget which requires pod2man
+- In order to get gcc and ld working without setting LD_LIBRARY_PATH, system links needed to be made to the libraries, this may be problematic later.
+
 ##Configuration
 
 Refer to [docs](https://gcc.gnu.org/install/configure.html)
